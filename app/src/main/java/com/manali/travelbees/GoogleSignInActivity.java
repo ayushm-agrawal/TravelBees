@@ -79,13 +79,13 @@ public class GoogleSignInActivity extends BaseActivity implements
     }
 
     // [START on_start_check_user]
-    @Override
+   /* @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-    }
+    }*/
     // [END on_start_check_user]
 
     // [START onactivityresult]
@@ -127,6 +127,8 @@ public class GoogleSignInActivity extends BaseActivity implements
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -182,12 +184,16 @@ public class GoogleSignInActivity extends BaseActivity implements
         hideProgressDialog();
         if (user != null) {
 
-            mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
+            Intent mainActivity = new Intent(GoogleSignInActivity.this, MainActivity.class);
+            startActivity(mainActivity);
+            finish();
+           /* mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);*/
         } else {
+
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
 
