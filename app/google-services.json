@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "749086068975",
+    "firebase_url": "https://travelbees-3a1bc.firebaseio.com",
+    "project_id": "travelbees-3a1bc",
+    "storage_bucket": "travelbees-3a1bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749086068975:android:6b65797711f7171e",
+        "android_client_info": {
+          "package_name": "com.manali.travelbees"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749086068975-7lrsjao31b33ue8ib5h4jtk5ucnm764l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.manali.travelbees",
+            "certificate_hash": "555267c13c6a01ab4a6aee30715f02b1d72ab777"
+          }
+        },
+        {
+          "client_id": "749086068975-plrbtd94bg8ff9el0vl4li7efibls3ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1AfmAUlBCjpcx-o53-oJ8HfN0mK9n1EE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749086068975-plrbtd94bg8ff9el0vl4li7efibls3ur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
