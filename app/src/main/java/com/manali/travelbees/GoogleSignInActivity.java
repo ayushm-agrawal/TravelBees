@@ -23,6 +23,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 
 /**
@@ -32,11 +36,15 @@ public class GoogleSignInActivity extends BaseActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener {
 
+
+
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
     // [END declare_auth]
 
 
@@ -52,12 +60,12 @@ public class GoogleSignInActivity extends BaseActivity implements
         setContentView(R.layout.activity_sign_in);
 
         // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-        mDetailTextView = (TextView) findViewById(R.id.detail);
+       // mStatusTextView = (TextView) findViewById(R.id.status);
+       // mDetailTextView = (TextView) findViewById(R.id.detail);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        //findViewById(R.id.sign_out_button).setOnClickListener(this);
         //findViewById(R.id.disconnect_button).setOnClickListener(this);
 
         // [START config_signin]
@@ -125,8 +133,26 @@ public class GoogleSignInActivity extends BaseActivity implements
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            final FirebaseUser user = mAuth.getCurrentUser();
+                            String uid = user.getUid();
+
+                            mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+
+                            HashMap<String, String> userMap = new HashMap<>();
+                            userMap.put("image", "default");
+                            userMap.put("thumb_image", "default");
+
+                            mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if(task.isSuccessful()){
+                                        updateUI(user);
+                                    }
+                                }
+                            });
+
+
 
 
                         } else {
@@ -185,9 +211,8 @@ public class GoogleSignInActivity extends BaseActivity implements
         if (user != null) {
 
             Intent mainActivity = new Intent(GoogleSignInActivity.this, MainActivity.class);
-            startActivity(mainActivity);
             finish();
-           /* mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
+             /* mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
@@ -215,8 +240,6 @@ public class GoogleSignInActivity extends BaseActivity implements
         int i = v.getId();
         if (i == R.id.sign_in_button) {
             signIn();
-        } else if (i == R.id.sign_out_button) {
-            signOut();
         }
     }
 
