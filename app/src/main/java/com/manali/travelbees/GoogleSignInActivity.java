@@ -51,8 +51,7 @@ public class GoogleSignInActivity extends BaseActivity implements
 
 
     private GoogleApiClient mGoogleApiClient;
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +138,7 @@ public class GoogleSignInActivity extends BaseActivity implements
                             mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
 
                             HashMap<String, String> userMap = new HashMap<>();
+                            userMap.put("name", user.getDisplayName());
                             userMap.put("image", "default");
                             userMap.put("thumb_image", "default");
 
@@ -178,7 +178,7 @@ public class GoogleSignInActivity extends BaseActivity implements
     }
     // [END signin]
 
-    private void signOut() {
+  /*  private void signOut() {
         // Firebase sign out
         mAuth.signOut();
 
@@ -204,13 +204,14 @@ public class GoogleSignInActivity extends BaseActivity implements
                         updateUI(null);
                     }
                 });
-    }
+    }*/
 
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
 
             Intent mainActivity = new Intent(GoogleSignInActivity.this, MainActivity.class);
+            startActivity(mainActivity);
             finish();
              /* mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
@@ -219,11 +220,10 @@ public class GoogleSignInActivity extends BaseActivity implements
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);*/
         } else {
 
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
+          
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+
         }
     }
 
