@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.manali.travelbees.MainActivity">
+    tools:context="com.manali.travelbees.TripActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -13,15 +13,41 @@
         android:id="@+id/appBarLayout">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/main_page_toolbar"
+            android:id="@+id/trip_page_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Group Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/toolbar_groupName"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/settingsMenu"
+                    android:src="@drawable/ic_settings_toolbar"/>
+            </RelativeLayout>
+            
+          </android.support.v7.widget.Toolbar>  
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/main_tabs"
+            android:id="@+id/trip_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -31,7 +57,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/main_tab_pager"
+        android:id="@+id/trip_tab_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/appBarLayout">
@@ -39,17 +65,17 @@
     </android.support.v4.view.ViewPager>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@drawable/ic_add_white"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:layout_marginBottom="26dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="22dp" />
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@mipmap/ic_camera_white" />
 
 </RelativeLayout>

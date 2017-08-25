@@ -30,7 +30,7 @@ import java.util.HashMap;
 
 
 /**
- * Demonstrate Firebase Authentication using a Google ID Token.
+ * Firebase Authentication Using Google Sign In
  */
 public class GoogleSignInActivity extends BaseActivity implements
         GoogleApiClient.OnConnectionFailedListener,
@@ -58,9 +58,6 @@ public class GoogleSignInActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        // Views
-       // mStatusTextView = (TextView) findViewById(R.id.status);
-       // mDetailTextView = (TextView) findViewById(R.id.detail);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -141,6 +138,10 @@ public class GoogleSignInActivity extends BaseActivity implements
                             userMap.put("name", user.getDisplayName());
                             userMap.put("image", "default");
                             userMap.put("thumb_image", "default");
+                            userMap.put("email", user.getEmail());
+                            userMap.put("username", "testUser");
+                            userMap.put("groups", null);
+
 
                             mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
