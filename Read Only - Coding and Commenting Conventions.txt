@@ -1,0 +1,27 @@
+--Coding Conventions
+We will follow certain naming conventions throughout the project so that it is clean and it is easier for everyone to understand. 
+
+1.) All the variable declaration will be done in "CAMELCASE". For example - "String fooBar;"
+2.) All the ids given to UI elements will use "SNAKE CASE". For Example - "btn_create_trip" . This specifies that it is a create trip button.
+3.) All the activities in the java folder will start with the name "Activity". For example - "ActivitySplashScreen". 
+4.) All the fragments in the java folder will start with the name "Fragment". For example - "FragmentFooBar".
+5.) All the interfaces in the java folder will start with the name "Interface". For example - "InterfaceFooBar".
+6.) Strings in xml files will "Not Be Hardcoded". All the string values will be stores in the strings folder. We will use "SNAKE CASE" for this.
+7.) We will write self explanatory code which will reduce the amount of comments that we have to use in a single class.
+
+
+--Commenting Conventions
+We will follow certain commenting conventions which will make it easier to make changes to the activities.
+
+1.) All the java classes will have a block after declaring the package which will follow the particular format.
+			********************************************
+			*   The description of the class           *
+			*                                          *
+			*   Last Edited On : 11/04/17              *
+			*   Last Edited By : Your Name Here        *
+			*   What Changed   : Added functionalities *
+			*        			1, 2, 3, ...		   *	
+			********************************************
+
+2.) Other than this, if you are making any extra functions, then you will have a single line comment on top of the function which spcifies what the function does.
+			// This function does this
