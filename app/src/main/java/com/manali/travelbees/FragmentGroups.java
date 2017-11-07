@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GroupsFragment extends Fragment {
+public class FragmentGroups extends Fragment {
 
     private RecyclerView mGroupsList;
 
@@ -30,7 +29,7 @@ public class GroupsFragment extends Fragment {
 
 
 
-    public GroupsFragment() {
+    public FragmentGroups() {
         // Required empty public constructor otherwise app will crash
     }
 
@@ -80,7 +79,7 @@ public class GroupsFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             groupsViewHolder.groupsView.setBackgroundColor(Color.LTGRAY);
-                            Intent tripActivityIntent = new Intent(getContext(), TripActivity.class);
+                            Intent tripActivityIntent = new Intent(getContext(), ActivityTripList.class);
                             tripActivityIntent.putExtra("groupId", tripId);
                             startActivity(tripActivityIntent);
 

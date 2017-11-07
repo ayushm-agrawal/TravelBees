@@ -4,13 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-/**
- * Created by Ayush on 8/19/2017.
- */
 
-class TripSectionPagerAdapter extends FragmentPagerAdapter {
+class SectionPagerAdapterTrips extends FragmentPagerAdapter {
 
-    public TripSectionPagerAdapter(FragmentManager fm) {
+    SectionPagerAdapterTrips(FragmentManager fm) {
         super(fm);
     }
 
@@ -19,11 +16,9 @@ class TripSectionPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                PhotosFragment photosFragment = new PhotosFragment();
-                return photosFragment;
+                return new FragmentPhotos();
             case 1:
-                ChatFragment chatFragment = new ChatFragment();
-                return chatFragment;
+                return new FragmentChat();
             default:
                 return null;
         }

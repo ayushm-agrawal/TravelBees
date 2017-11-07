@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,21 +16,33 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.android.gms.common.ConnectionResult;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+/*
+        **************************************************************************
+        *   This class contain the main activity of the trips which the user     *
+        *    will see                                                            *
+        *                                                                        *
+        *   Last Edited On : 11/06/17                                            *
+        *   Last Edited By : Ayush Manish Agrawal                                *
+        *   What Changed   :                                                     *
+        *        			            		                                 *
+        **************************************************************************
+*/
+
+public class ActivityMain extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
     private static final String TAG = "GoogleActivity";
 
     private ViewPager mViewPager;
-    private SectionPagerAdapter mSectionsPageAdapter;
+    private SectionPagerAdapterMain mSectionsPageAdapter;
 
     private TabLayout mTabLayout;
 
@@ -39,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         //Tabs for the main Page (Groups and Friends)
         mViewPager = (ViewPager) findViewById(R.id.main_tab_pager);
-        mSectionsPageAdapter = new SectionPagerAdapter(getSupportFragmentManager());
+        mSectionsPageAdapter = new SectionPagerAdapterMain(getSupportFragmentManager());
 
         mViewPager.setAdapter(mSectionsPageAdapter);
 
@@ -73,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent createGroupIntent = new Intent(MainActivity.this, CreateNewTrip.class);
+                Intent createGroupIntent = new Intent(ActivityMain.this, ActivityCreateNewTrip.class);
                 startActivity(createGroupIntent);
             }
         });
@@ -95,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     //send user to signIn page after logging out
     private void sendToSignIn() {
-        Intent signInIntent = new Intent(MainActivity.this, GoogleSignInActivity.class);
+        Intent signInIntent = new Intent(ActivityMain.this, ActivityGoogleSignIn.class);
         startActivity(signInIntent);
         finish();
     }
