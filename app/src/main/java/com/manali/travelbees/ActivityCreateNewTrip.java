@@ -2,16 +2,14 @@ package com.manali.travelbees;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,17 +17,23 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
 /*
- * This class saves the group trip information in the Firebase Database
- * which is used to populate the Recycler View
- */
-public class CreateNewTrip extends AppCompatActivity {
+        **************************************************************************
+        *   This class saves the group trip information in the Firebase Database *                            *
+        *    which is used to populate the Recycler View                         *
+        *                                                                        *
+        *   Last Edited On : 11/06/17                                            *
+        *   Last Edited By : Ayush Manish Agrawal                                *
+        *   What Changed   :                                                     *
+        *        			            		                                 *
+        **************************************************************************
+*/
+
+public class ActivityCreateNewTrip extends AppCompatActivity {
 
     private TextInputLayout newTripCity;
     private TextInputLayout newTripMembers;
@@ -93,12 +97,12 @@ public class CreateNewTrip extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
 
                         //going back to main activity on successful push of data
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
-                            Intent mainActivityIntent = new Intent(CreateNewTrip.this, MainActivity.class);
+                            Intent mainActivityIntent = new Intent(ActivityCreateNewTrip.this, ActivityMain.class);
                             startActivity(mainActivityIntent);
                             finish();
-                            Toast.makeText(CreateNewTrip.this, "The trip has been created successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ActivityCreateNewTrip.this, "The trip has been created successfully", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

@@ -1,14 +1,21 @@
 package com.manali.travelbees;
 
-/**
- * Created by Ayush on 6/21/2017.
- */
+/*
+        ********************************************
+        *   This class is used in Google Sign In   *
+        *                                          *
+        *   Last Edited On : 11/06/17              *
+        *   Last Edited By : Ayush Manish Agrawal  *
+        *   What Changed   :                       *
+        *        			            		   *
+        ********************************************
+*/
 
 import android.app.ProgressDialog;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 
-public class BaseActivity extends AppCompatActivity {
+public class ActivityBase extends AppCompatActivity {
 
     @VisibleForTesting
     public ProgressDialog mProgressDialog;

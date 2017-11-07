@@ -4,12 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-/**
- * Created by Ayush on 8/16/2017.
- */
 
-class SectionPagerAdapter extends FragmentPagerAdapter{
-    public SectionPagerAdapter(FragmentManager fm) {
+class SectionPagerAdapterMain extends FragmentPagerAdapter{
+    SectionPagerAdapterMain(FragmentManager fm) {
         super(fm);
     }
 
@@ -18,14 +15,10 @@ class SectionPagerAdapter extends FragmentPagerAdapter{
 
         switch (position) {
             case 0:
-                GroupsFragment groupsFragment = new GroupsFragment();
-                return groupsFragment;
-
+                return new FragmentGroups();
             case 1:
-                FriendsFragment friendsFragment = new FriendsFragment();
-                return friendsFragment;
-
-                default:
+                return new FragmentFriends();
+            default:
                     return null;
         }
     }

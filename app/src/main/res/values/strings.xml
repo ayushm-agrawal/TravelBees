@@ -82,4 +82,7 @@
     <string name="group_owner">Group Owner</string>
     <string name="trip_name">Trip Name:</string>
     <string name="trip_to">Trip to:</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="signOut">Sign Out</string>
+    <string name="chat_fragment">Welcome to Chat Fragment</string>
 </resources>
