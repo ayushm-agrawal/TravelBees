@@ -1,62 +1,71 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+   android:background="#000"
     android:orientation="vertical"
     android:weightSum="4">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/settings_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:elevation="17dp"
-            android:src="@mipmap/ic_logotest"
-            tools:layout_editor_absoluteX="105dp"
-            tools:layout_editor_absoluteY="60dp" />
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/settings_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:elevation="17dp"
+        android:src="@mipmap/beelogo"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="60dp" />
 
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/title_bottom_margin"
-            android:text="@string/google_title_text"
-            android:textAppearance="@android:style/TextAppearance.Material.Large.Inverse"
-            android:theme="@style/ThemeOverlay.MyTitleText" />
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="@string/google_title_text"
+        android:fontFamily="@font/righteous"
+        android:textAppearance="@android:style/TextAppearance.Material.Large.Inverse"
+        android:textColor="#FFF"
+        android:theme="@style/ThemeOverlay.MyTitleText" />
 
-        <TextView
-            android:id="@+id/app_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_desc"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium.Inverse" />
+    <TextView
+        android:id="@+id/app_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/app_desc"
+        android:fontFamily="@font/poiret_one"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium.Inverse"
+        android:textColor="#FFF" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/circular_transparent_button"
+        android:fontFamily="@font/poiret_one"
+        android:text="lOGIN"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="#FFF" />
+        <!--android:visibility="visible" />-->
+        <!--&lt;!&ndash;tools:visibility="gone" />&ndash;&gt;-->
+    <!---->
 
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary">
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="visible"
-            tools:visibility="gone" />
-    </RelativeLayout>
 
-</LinearLayout>
+
+
+
+
+</RelativeLayout>
