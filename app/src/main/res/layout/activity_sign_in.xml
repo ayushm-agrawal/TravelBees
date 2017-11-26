@@ -40,7 +40,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/app_desc"
-        android:fontFamily="@font/righteous"
+        android:fontFamily="@font/poiret_one"
         android:textAppearance="@android:style/TextAppearance.Material.Medium.Inverse"
         android:textColor="#FFF" />
 
@@ -52,8 +52,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         android:background="@drawable/circular_transparent_button"
-        android:fontFamily="@font/righteous"
-        android:text="login"
+        android:fontFamily="@font/poiret_one"
+        android:text="lOGIN"
+        android:textAllCaps="false"
+        android:textStyle="bold"
         android:textColor="#FFF" />
         <!--android:visibility="visible" />-->
         <!--&lt;!&ndash;tools:visibility="gone" />&ndash;&gt;-->
