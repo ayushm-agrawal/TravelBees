@@ -8,13 +8,13 @@
     android:weightSum="4">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/settings_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="42dp"
         android:elevation="17dp"
         android:src="@mipmap/app_icon"
         tools:layout_editor_absoluteX="105dp"
@@ -82,6 +82,19 @@
         android:fontFamily="@font/poiret_one"
         android:textAllCaps="false"
         android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/signInError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sign_in_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:fontFamily="@font/poiret_one"
+        android:text="@string/signInError"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
 
     <!--android:visibility="visible" />-->

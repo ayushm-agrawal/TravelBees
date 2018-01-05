@@ -23,7 +23,7 @@ import android.widget.Toast;
         **************************************************************************
 */
 
-public class ActivityTripList extends AppCompatActivity {
+public class ActivityTrip extends AppCompatActivity {
 
     private static final String TAG="TripActivity";
     private ViewPager tripViewPager;
@@ -56,7 +56,7 @@ public class ActivityTripList extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ActivityTripList.this, "ADD CAMERA ACTIVITY", Toast.LENGTH_LONG).show();
+                Toast.makeText(ActivityTrip.this, "ADD CAMERA ACTIVITY", Toast.LENGTH_LONG).show();
             }
         });
 

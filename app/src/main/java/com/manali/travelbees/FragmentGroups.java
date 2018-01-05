@@ -79,7 +79,7 @@ public class FragmentGroups extends Fragment {
                         @Override
                         public void onClick(View v) {
                             groupsViewHolder.groupsView.setBackgroundColor(Color.LTGRAY);
-                            Intent tripActivityIntent = new Intent(getContext(), ActivityTripList.class);
+                            Intent tripActivityIntent = new Intent(getContext(), ActivityTrip.class);
                             tripActivityIntent.putExtra("groupId", tripId);
                             startActivity(tripActivityIntent);
 
