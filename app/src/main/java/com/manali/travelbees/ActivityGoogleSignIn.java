@@ -24,16 +24,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 /*
         **************************************************************************
         *   Firebase Authentication Using Google Sign In                         *
         *                                                                        *
-        *   Last Edited On : 11/06/17                                            *
+        *   Last Edited On : 11/27/17                                            *
         *   Last Edited By : Ayush Manish Agrawal                                *
-        *   What Changed   :                                                     *
-        *        			            		                                 *
+        *   What Changed   : Intent to MakeProfile Activity.                     *
+        *        			 Sign In Error text added.                            *
         **************************************************************************
 */
 public class ActivityGoogleSignIn extends ActivityBase implements
@@ -62,13 +63,13 @@ public class ActivityGoogleSignIn extends ActivityBase implements
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
-        // [START config_signin]
+        // [START config_sign in]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        // [END config_signin]
+        // [END config_sign in]
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
@@ -95,7 +96,7 @@ public class ActivityGoogleSignIn extends ActivityBase implements
             }
         }
     }
-    // [END onactivityresult]
+    // [END on activity result]
 
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
@@ -113,22 +114,31 @@ public class ActivityGoogleSignIn extends ActivityBase implements
                             Log.d(TAG, "signInWithCredential:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
 
+                            assert user != null;
                             mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
 
-                            HashMap<String, String> userMap = new HashMap<>();
-                            userMap.put("name", user.getDisplayName());
+
+                            Map<String, Object> userMap = new HashMap<>();
                             userMap.put("image", "default");
                             userMap.put("thumb_image", "default");
                             userMap.put("email", user.getEmail());
-                            userMap.put("username", "testUser");
                             userMap.put("groups", null);
+                            userMap.put("loginBoolean", "true");
 
 
-                            mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            mDatabase.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if (task.isSuccessful()) {
+                                        /*user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()){
+                                                    Log.d("Confirmation", "email sent");
+                                                }
+                                            }
+                                        });*/
                                         updateUI(user);
                                     }
                                 }
@@ -146,21 +156,22 @@ public class ActivityGoogleSignIn extends ActivityBase implements
     }
     // [END auth_with_google]
 
-    // [START signin]
+    // [START sign in]
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-    // [END signin]
+    // [END sign in]
 
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            Intent mainActivity = new Intent(ActivityGoogleSignIn.this, ActivityMain.class);
-            startActivity(mainActivity);
+            Intent makeProfileActivity = new Intent(ActivityGoogleSignIn.this, ActivityMakeProfile.class);
+            startActivity(makeProfileActivity);
             finish();
+
         } else {
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.signInError).setVisibility(View.VISIBLE);
         }
     }
 
