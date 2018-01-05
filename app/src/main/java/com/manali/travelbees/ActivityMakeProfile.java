@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -93,7 +91,6 @@ public class ActivityMakeProfile extends AppCompatActivity {
             public void onClick(View view) {
                 final String fullNameText = fullName.getText().toString();
                 final String userNameText = userName.getText().toString();
-
                 //if username is empty then throw error
                 if(userNameText.isEmpty()){
                     duplicateUsername.setText("You cannot leave the username empty");
